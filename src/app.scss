@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  color: white;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .header-container {
+    h1 {
+      margin: 2rem 0;
+      font-family: "Corinthia", cursive;
+      font-size: 10vw;
+    }
+    h3 {
+      font-family: "Roboto Mono", monospace;
+    }
+    input {
+      padding: 2px 2px;
+      text-align: center;
+      font-size: 1rem;
+      width: 10rem;
+      text-transform: uppercase;
+      height: 1.5rem;
+    }
+    button {
+      margin-top: 10px;
+      border-radius: 25px;
+      padding: 5px;
+      width: 20vw;
+      border: none;
+      &:hover {
+        cursor: pointer;
+        background: rgba($color: #c0f8f8, $alpha: 1);
+      }
+    }
+    @include flex-center();
+  }
+
+  .no-city {
+    p {
+      margin-top: 10rem;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .location-container {
+    margin-top: 5rem;
+    h2 {
+      font-size: 7vw;
+      font-family: "Luxurious Script", cursive;
+    }
+    @include flex-center();
+  }
+
+  .temp-container {
+    margin-bottom: 1rem;
+    img {
+      width: 30vw;
+    }
+    p {
+      font-size: 10vw;
+      border: white 1px solid;
+      padding: 8px;
+    }
+    @include flex-center();
+  }
+
+  @media (min-width: 270px) {
+    .header-container {
+      input {
+        width: 13rem;
+        height: 2rem;
+      }
+    }
+    .no-city {
+      p {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  @media (min-width: 450px) {
+    .header-container {
+      input {
+        width: 20rem;
+        font-size: 1.5rem;
+        height: 2rem;
+      }
+      button {
+        margin-top: 20px;
+        width: 8rem;
+      }
+    }
+
+    .no-city {
+      p {
+        font-size: 3rem;
+      }
+    }
+
+    .location-container {
+      h2 {
+        font-size: 3rem;
+      }
+    }
+
+    .temp-container {
+      img {
+        width: 8rem;
+      }
+      p {
+        font-size: 3rem;
+      }
+    }
+  }
+  @media (min-width: 1000px) {
+    .header-container {
+      h1 {
+        font-size: 7rem;
+      }
+      input {
+        width: 30rem;
+      }
+    }
+  }
+}
