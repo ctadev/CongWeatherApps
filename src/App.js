@@ -26,7 +26,7 @@ function App() {
   };
 
   const KeyPress = (event) => {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
       fetchData();
     }
   };
