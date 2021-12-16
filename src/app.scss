@@ -33,9 +33,6 @@ body {
       font-family: "Corinthia", cursive;
       font-size: 10vw;
     }
-    h3 {
-      font-family: "Roboto Mono", monospace;
-    }
     input {
       padding: 2px 2px;
       text-align: center;
@@ -70,7 +67,8 @@ body {
     margin-top: 5rem;
     h2 {
       font-size: 7vw;
-      font-family: "Luxurious Script", cursive;
+      font-family: "Open Sans", sans-serif;
+      text-align: center;
     }
     @include flex-center();
   }
