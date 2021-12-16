@@ -5,23 +5,30 @@ function App() {
   const [datas, setDatas] = useState();
   const [city, setCity] = useState();
 
-  const url = `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API}&q=${city}&aqi=no`;
+  const url = `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API}&q=${city}&aqi=no`;
+
+  const fetchData = async () => {
+    try {
+      await fetch(url).then((response) =>
+        response.json().then((data) => setDatas(data))
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await fetch(url).then((response) =>
-          response.json().then((data) => setDatas(data))
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchData();
-  });
+  }, []);
 
   const cityHandler = (e) => {
     setCity(e.target.value);
+  };
+
+  const keyPress = (evt) => {
+    if (evt.key === "Enter") {
+      fetchData();
+    }
   };
 
   if (datas) {
@@ -34,6 +41,7 @@ function App() {
             placeholder="Enter City..."
             onChange={cityHandler}
             type="text"
+            onKeyPress={keyPress}
           />
         </div>
         {typeof datas.location === "undefined" ? (

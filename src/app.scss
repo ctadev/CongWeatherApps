@@ -84,6 +84,7 @@ body {
       font-size: 10vw;
       border: white 1px solid;
       padding: 8px;
+      background: rgba(105, 104, 104, 0.4);
     }
     @include flex-center();
   }
