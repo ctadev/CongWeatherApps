@@ -1,5 +1,5 @@
 import "./app.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
   const [datas, setDatas] = useState();
@@ -12,14 +12,11 @@ function App() {
       await fetch(url).then((response) =>
         response.json().then((data) => setDatas(data))
       );
+      setCity("");
     } catch (err) {
       console.log(err);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const cityHandler = (e) => {
     setCity(e.target.value);
@@ -68,9 +65,21 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Loading...Api fetching....</h1>
-    </div>
+    <section className="app-container">
+      <div className="header-container">
+        <h1>Cong's Weather App</h1>
+        <input
+          value={city}
+          placeholder="Enter City..."
+          onChange={cityHandler}
+          type="text"
+          onKeyPress={keyPress}
+        />
+      </div>
+      <div className="no-city">
+        <p>Welcome to Cong's Weather App, Enter a city to get the weather.</p>
+      </div>
+    </section>
   );
 }
 
