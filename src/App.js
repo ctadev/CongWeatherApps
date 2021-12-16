@@ -7,28 +7,21 @@ function App() {
 
   const url = `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API}&q=${city}&aqi=no`;
 
-  const fetchData = async () => {
-    try {
-      await fetch(url).then((response) =>
-        response.json().then((data) => setDatas(data))
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await fetch(url).then((response) =>
+          response.json().then((data) => setDatas(data))
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
     fetchData();
-  }, []);
+  });
 
   const cityHandler = (e) => {
     setCity(e.target.value);
-  };
-
-  const KeyPress = (event) => {
-    if (event.key === "Enter") {
-      fetchData();
-    }
   };
 
   if (datas) {
@@ -41,9 +34,7 @@ function App() {
             placeholder="Enter City..."
             onChange={cityHandler}
             type="text"
-            onKeyPress={KeyPress}
           />
-          <button onClick={() => fetchData()}>Search</button>
         </div>
         {typeof datas.location === "undefined" ? (
           <div className="no-city">
@@ -59,7 +50,7 @@ function App() {
             </div>
 
             <div className="temp-container">
-              <img src={datas.current.condition.icon} />
+              <img src={datas.current.condition.icon} alt="weather icon" />
               <p>{`${datas.current.temp_c}°C`}</p>
             </div>
           </div>
